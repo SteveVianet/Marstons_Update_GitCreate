@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[TamperCases] (
+    [CaseID] INT IDENTITY (1, 1) NOT NULL,
+    [EDISID] INT NOT NULL,
+    CONSTRAINT [PK_Tamper] PRIMARY KEY CLUSTERED ([CaseID] ASC),
+    CONSTRAINT [FK_TamperCases_Sites] FOREIGN KEY ([EDISID]) REFERENCES [dbo].[Sites] ([EDISID])
+);
+

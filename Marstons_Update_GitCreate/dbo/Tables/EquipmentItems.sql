@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[EquipmentItems] (
+    [ID]                     INT            IDENTITY (1, 1) NOT NULL,
+    [EDISID]                 INT            NOT NULL,
+    [InputID]                INT            NOT NULL,
+    [LocationID]             INT            NOT NULL,
+    [EquipmentTypeID]        INT            NOT NULL,
+    [Description]            VARCHAR (1024) NOT NULL,
+    [ValueSpecification]     FLOAT (53)     NULL,
+    [ValueTolerance]         FLOAT (53)     NULL,
+    [InUse]                  BIT            DEFAULT (1) NOT NULL,
+    [AlarmThreshold]         FLOAT (53)     NULL,
+    [ValueLowSpecification]  FLOAT (53)     NULL,
+    [ValueHighSpecification] FLOAT (53)     NULL,
+    [LowAlarmThreshold]      FLOAT (53)     NULL,
+    [HighAlarmThreshold]     FLOAT (53)     NULL,
+    [AlarmStartTime]         TIME (0)       DEFAULT ('11:00:00') NOT NULL,
+    [AlarmEndTime]           TIME (0)       DEFAULT ('23:00:00') NOT NULL,
+    [AlarmStatus]            BIT            DEFAULT ((1)) NOT NULL,
+    [LastAlarmingReading]    DATETIME       DEFAULT (NULL) NULL,
+    [LastAlarmingValue]      FLOAT (53)     NULL,
+    CONSTRAINT [PK_EquipmentItems] PRIMARY KEY CLUSTERED ([EDISID] ASC, [InputID] ASC),
+    CONSTRAINT [FK_EquipmentItems_EquipmentTypes] FOREIGN KEY ([EquipmentTypeID]) REFERENCES [dbo].[EquipmentTypes] ([ID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_EquipmentItems_Sites] FOREIGN KEY ([EDISID]) REFERENCES [dbo].[Sites] ([EDISID]) ON DELETE CASCADE
+);
+

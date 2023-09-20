@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34031.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Marstons_Update_GitCreate", "Marstons_Update_GitCreate\Marstons_Update_GitCreate.sqlproj", "{D13D90C8-9D44-4232-A8F8-12A3963A936A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D13D90C8-9D44-4232-A8F8-12A3963A936A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13D90C8-9D44-4232-A8F8-12A3963A936A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13D90C8-9D44-4232-A8F8-12A3963A936A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D13D90C8-9D44-4232-A8F8-12A3963A936A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13D90C8-9D44-4232-A8F8-12A3963A936A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13D90C8-9D44-4232-A8F8-12A3963A936A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B389E06D-1EEA-4C50-B439-A29D60A9125F}
+	EndGlobalSection
+EndGlobal

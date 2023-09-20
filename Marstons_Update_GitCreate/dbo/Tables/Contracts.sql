@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Contracts] (
+    [ID]                         INT           IDENTITY (1, 1) NOT NULL,
+    [Description]                VARCHAR (255) NOT NULL,
+    [ExpiryDate]                 SMALLDATETIME NOT NULL,
+    [DefaultRaiseStatus]         INT           CONSTRAINT [DF_Contracts_DefaultRaiseStatus] DEFAULT (0) NOT NULL,
+    [RequiresPO]                 BIT           NOT NULL,
+    [CanBeginWithoutPO]          BIT           NOT NULL,
+    [PercentageIncrease]         INT           DEFAULT (0) NOT NULL,
+    [StartDate]                  SMALLDATETIME NULL,
+    [AllInclusive]               BIT           DEFAULT (0) NOT NULL,
+    [Owner]                      VARCHAR (255) NULL,
+    [UseBillingItems]            BIT           DEFAULT ((0)) NOT NULL,
+    [MaintenancePeriodMin]       INT           CONSTRAINT [DF_Contracts_MaintenancePeriodMin] DEFAULT ((17)) NOT NULL,
+    [MaintenancePeriodMax]       INT           CONSTRAINT [DF_Contracts_MaintenancePeriodMax] DEFAULT ((28)) NOT NULL,
+    [TermYears]                  INT           NULL,
+    [LabourMinutesThreshold]     INT           NULL,
+    [InvoiceCostThreshold]       FLOAT (53)    NULL,
+    [DataWeeklyIncomePerSite]    FLOAT (53)    NULL,
+    [DataWeeklyIncome]           FLOAT (53)    NULL,
+    [ServiceWeeklyIncomePerSite] FLOAT (53)    NULL,
+    [ServiceWeeklyIncome]        FLOAT (53)    NULL,
+    [Type]                       INT           DEFAULT ((1)) NOT NULL,
+    [IsAuditedDaily]             BIT           DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_Contracts] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 90)
+);
+
