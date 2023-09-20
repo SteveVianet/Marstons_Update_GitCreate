@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [eposimport]
+    WITH PASSWORD = N'xl,izfhl2cjs|tpuqf+xkfpAmsFT7_&#$!~<=vGqDWNljpQ$', SID = 0x04BBF4D58B26984F9674454CB1515C1D, DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

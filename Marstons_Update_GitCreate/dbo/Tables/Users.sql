@@ -27,3 +27,20 @@
     CONSTRAINT [UX_Users] UNIQUE NONCLUSTERED ([Login] ASC) WITH (FILLFACTOR = 90)
 );
 
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Users_UserType]
+    ON [dbo].[Users]([UserType] ASC)
+    INCLUDE([ID]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Users_Web]
+    ON [dbo].[Users]([Anonymise] ASC, [ID] ASC, [Deleted] ASC, [WebActive] ASC)
+    INCLUDE([UserName]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Users_VRSUserID]
+    ON [dbo].[Users]([VRSUserID] ASC);
+

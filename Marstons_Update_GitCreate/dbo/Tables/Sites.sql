@@ -71,3 +71,7 @@ CREATE NONCLUSTERED INDEX [IX_Sites_Visibility]
     ON [dbo].[Sites]([Hidden] ASC)
     INCLUDE([EDISID], [SiteID], [Name], [Address3], [Address4], [SiteOnline], [Quality]);
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'This is not the ID of the EDIS', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'Sites', @level2type = N'COLUMN', @level2name = N'EDISID';
+

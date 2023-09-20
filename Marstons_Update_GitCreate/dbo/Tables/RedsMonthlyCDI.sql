@@ -8,3 +8,9 @@
     [CDI]         FLOAT (53)   NOT NULL
 );
 
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[RedsMonthlyCDI] TO PUBLIC
+    AS [dbo];
+

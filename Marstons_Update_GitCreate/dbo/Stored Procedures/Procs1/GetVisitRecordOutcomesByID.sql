@@ -1,0 +1,22 @@
+﻿CREATE PROCEDURE [dbo].[GetVisitRecordOutcomesByID]
+
+	@OutcomeID INT,
+	@OutcomeDescription NVARCHAR(100) OUTPUT
+
+AS
+
+SET NOCOUNT ON
+
+DECLARE @Outcomes AS TABLE ([ID] INT, [Description] NVARCHAR(100))
+INSERT INTO @Outcomes EXEC [SQL1\SQL1].[ServiceLogger].[dbo].GetVRSOutcomes
+
+
+SELECT @OutcomeDescription = [Description]
+FROM VRSSpecificOutcome
+JOIN @Outcomes AS Outcomes ON Outcomes.[ID] = SpecificOutcomeID
+WHERE SpecificOutcomeID = @OutcomeID
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[GetVisitRecordOutcomesByID] TO PUBLIC
+    AS [dbo];
+

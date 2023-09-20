@@ -1,0 +1,2 @@
+﻿CREATE USER [MAINGROUP\Calibrators] FOR LOGIN [MAINGROUP\Calibrators];
+

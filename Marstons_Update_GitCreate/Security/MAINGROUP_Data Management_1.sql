@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [MAINGROUP\Data Management]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

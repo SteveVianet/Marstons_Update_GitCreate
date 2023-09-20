@@ -1,0 +1,2 @@
+﻿CREATE USER [MAINGROUP\Team Leaders] FOR LOGIN [MAINGROUP\Team Leaders];
+

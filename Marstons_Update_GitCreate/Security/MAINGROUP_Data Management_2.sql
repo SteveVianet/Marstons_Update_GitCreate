@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MAINGROUP\Data Management]
+    AUTHORIZATION [MAINGROUP\Data Management];
+

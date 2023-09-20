@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MAINGROUP\Team Leaders]
+    AUTHORIZATION [MAINGROUP\Team Leaders];
+

@@ -1,0 +1,3 @@
+﻿CREATE USER [MAINGROUP\Jonathan.Smith]
+    WITH DEFAULT_SCHEMA = [MAINGROUP\Jonathan.Smith];
+

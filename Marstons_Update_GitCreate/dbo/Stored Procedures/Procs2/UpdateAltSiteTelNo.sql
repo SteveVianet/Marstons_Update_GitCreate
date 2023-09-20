@@ -1,0 +1,35 @@
+﻿CREATE PROCEDURE UpdateAltSiteTelNo
+(
+	@EDISID		INT,
+	@AltSiteTelNo		VARCHAR(30),
+	@UpdateID		ROWVERSION = NULL	OUTPUT
+)
+
+AS
+
+IF 	(SELECT COUNT(*)
+	FROM dbo.Sites 
+	WHERE EDISID = @EDISID 
+	AND UpdateID = @UpdateID) > 0 
+     OR @UpdateID IS NULL
+BEGIN
+	UPDATE dbo.Sites
+	SET AltSiteTelNo = @AltSiteTelNo
+	WHERE EDISID = @EDISID
+
+	SET @UpdateID = (SELECT UpdateID FROM Sites WHERE EDISID = @EDISID)
+
+	RETURN 0
+
+END
+ELSE
+BEGIN
+	RETURN -1
+
+END
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[UpdateAltSiteTelNo] TO PUBLIC
+    AS [dbo];
+

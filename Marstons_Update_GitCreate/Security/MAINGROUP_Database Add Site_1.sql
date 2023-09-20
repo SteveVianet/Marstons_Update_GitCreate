@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MAINGROUP\Database Add Site]
+    AUTHORIZATION [MAINGROUP\Database Add Site];
+

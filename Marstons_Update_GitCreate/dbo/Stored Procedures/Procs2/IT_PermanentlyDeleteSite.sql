@@ -1,0 +1,409 @@
+﻿CREATE PROCEDURE [dbo].[IT_PermanentlyDeleteSite]
+(
+	@EDISID	INT,
+	@Full	BIT = 0
+)
+
+AS
+
+CREATE TABLE #Calls (ID INT NOT NULL PRIMARY KEY)
+CREATE TABLE #MasterDates (ID INT NOT NULL PRIMARY KEY)
+CREATE TABLE #ProposedFontSetups (ID INT NOT NULL PRIMARY KEY)
+
+-- Get list of call IDs for deletion
+INSERT INTO #Calls
+(ID)
+SELECT ID
+FROM Calls
+WHERE EDISID = @EDISID
+
+-- Get list of MasterDateIDs for deletion
+INSERT INTO #MasterDates
+(ID)
+SELECT ID
+FROM MasterDates
+WHERE EDISID = @EDISID
+
+-- Get list of ProposedFontSetup IDs
+INSERT INTO #ProposedFontSetups
+(ID)
+SELECT ID
+FROM ProposedFontSetups
+WHERE EDISID = @EDISID
+
+-- Deletes - in alphabetical order
+DELETE
+FROM AuditExceptions
+WHERE EDISID = @EDISID
+
+DELETE
+FROM Budgets
+WHERE EDISID = @EDISID
+
+DELETE
+FROM CallActions
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE 
+FROM CallBillingItems
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallComments
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallCompletionSheets
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallCreditNotes
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallFaults
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallLines
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE 
+FROM CallReasons
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallSiteStocks
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallStatusHistory
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE 
+FROM CallTampers
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallWorkDetailComments
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM CallWorkItems
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+-- Calls has to be done later
+
+DELETE
+FROM CleaningProgress
+WHERE EDISID = @EDISID
+
+DELETE
+FROM CleaningServiceActions
+WHERE MasterDateID IN (SELECT ID FROM #MasterDates)
+
+DELETE
+FROM CleaningStack
+WHERE CleaningID IN (SELECT ID FROM #MasterDates)
+
+IF @Full = 1
+BEGIN
+	DELETE
+	FROM DLData
+	WHERE DownloadID IN (SELECT ID FROM #MasterDates)
+END
+
+DELETE
+FROM Delivery
+WHERE DeliveryID IN (SELECT ID FROM #MasterDates)
+
+DELETE
+FROM Dispense
+WHERE EDISID = @EDISID
+
+IF @Full = 1
+BEGIN
+	DELETE
+	FROM DispenseActions
+	WHERE EDISID = @EDISID
+END
+
+DELETE
+FROM DownloadReports
+WHERE EDISID = @EDISID
+
+DELETE
+FROM EquipmentItems
+WHERE EDISID = @EDISID
+
+DELETE
+FROM EquipmentReadings
+WHERE EDISID = @EDISID
+
+DELETE
+FROM FaultStack
+WHERE FaultID IN (SELECT ID FROM #MasterDates)
+
+DELETE
+FROM FlowmeterConfiguration
+WHERE EDISID = @EDISID
+
+DELETE
+FROM InvoiceItems
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM Issues
+WHERE EDISID = @EDISID
+
+DELETE
+FROM LineCleaning
+WHERE EDISID = @EDISID
+
+-- MasterDates has to be done later
+
+DELETE
+FROM NilDeliveries
+WHERE MasterDateID IN (SELECT ID FROM #MasterDates)
+
+DELETE
+FROM PATTracking
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM PeriodCacheCleaning
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheCleaningDispense
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheCleaningStatus
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheQuality
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheSales
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheTemperature
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheTradingDispense
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheTradingDispenseWeekly
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheCleaningDispenseDaily
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheVariance
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheVarianceInternal
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PeriodCacheYield
+WHERE EDISID = @EDISID
+
+DELETE
+FROM ProductPrices
+WHERE EDISID = @EDISID
+
+DELETE
+FROM ProposedFontSetupCalibrationValues
+WHERE ProposedFontSetupID IN (SELECT ID FROM #ProposedFontSetups)
+
+DELETE
+FROM ProposedFontSetupItems
+WHERE ProposedFontSetupID IN (SELECT ID FROM #ProposedFontSetups)
+
+DELETE
+FROM ProposedFontSetups
+WHERE EDISID = @EDISID
+
+DELETE
+FROM PumpSetup
+WHERE EDISID = @EDISID
+
+DELETE
+FROM Sales
+WHERE EDISID = @EDISID
+
+DELETE
+FROM ScheduleSites
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteActions
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteAudits
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteClosingHours
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteComments
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteContractHistory
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteContracts
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteGroupSites
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteKeyProducts
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteKeyTaps
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteLocations
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteNotes
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SitePointsCategories
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteProductCategorySpecifications
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteProductCategoryTies
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteProductIFMSetpoints
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteProductSpecifications
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteProductTies
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteProperties
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteRankingCurrent
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteRankings
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteStatusHistory
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteStockistCategories
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteQualityHistory
+WHERE EDISID = @EDISID
+
+DELETE
+FROM SiteTradingShifts
+WHERE EDISID = @EDISID
+
+DELETE 
+FROM SiteExceptions
+WHERE EDISID = @EDISID
+
+-- Sites has to be done later
+
+DELETE
+FROM Stock
+WHERE MasterDateID IN (SELECT ID FROM #MasterDates)
+
+DELETE
+FROM SupplementaryCallStatusItems
+WHERE CallID IN (SELECT ID FROM #Calls)
+
+DELETE
+FROM SystemStock
+WHERE PreviousEDISID = @EDISID
+
+DELETE
+FROM TamperCaseEvents
+WHERE CaseID IN (SELECT CaseID FROM TamperCases WHERE EDISID = @EDISID)
+
+DELETE
+FROM TamperCases
+WHERE EDISID = @EDISID
+
+DELETE
+FROM UserSites
+WHERE EDISID = @EDISID
+
+DELETE 
+FROM VisitDamages
+WHERE VisitRecordID IN (SELECT ID FROM VisitRecords WHERE EDISID = @EDISID)
+
+DELETE 
+FROM VisitRecords
+WHERE EDISID = @EDISID
+
+DELETE
+FROM WaterStack
+WHERE WaterID IN (SELECT ID FROM #MasterDates)
+
+-- Stuff we had to do later!
+
+DELETE
+FROM Calls
+WHERE EDISID = @EDISID
+
+IF @Full = 1
+BEGIN
+	DELETE
+	FROM MasterDates
+	WHERE EDISID = @EDISID
+END
+
+IF @Full = 1
+BEGIN
+	DELETE
+	FROM Sites
+	WHERE EDISID = @EDISID
+END
+
+DROP TABLE #Calls
+DROP TABLE #ProposedFontSetups
+DROP TABLE #MasterDates

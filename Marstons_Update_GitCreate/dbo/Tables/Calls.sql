@@ -64,3 +64,8 @@ CREATE NONCLUSTERED INDEX [missing_index_473627_473626_Calls]
     ON [dbo].[Calls]([VisitedOn] ASC)
     INCLUDE([ID], [EDISID]);
 
+
+GO
+CREATE STATISTICS [hind_1056722817_1A_4A]
+    ON [dbo].[Calls]([ID], [RaisedOn]);
+

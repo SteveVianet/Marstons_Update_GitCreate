@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MAINGROUP\Calibrators]
+    AUTHORIZATION [MAINGROUP\Calibrators];
+

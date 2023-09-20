@@ -1,0 +1,25 @@
+﻿
+CREATE PROCEDURE GetEquipmentDates
+(
+	@EDISID		INT,
+	@SlaveID	INT = NULL,
+	@IsDigital	BIT = NULL,
+	@InputID	INT = NULL
+)
+
+AS
+
+SELECT CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, LogDate))) AS [Date]
+FROM dbo.EquipmentReadings
+WHERE EquipmentReadings.EDISID = @EDISID
+AND (@InputID IS NULL
+OR 	(InputID = @InputID))
+GROUP BY CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, LogDate)))
+ORDER BY CONVERT(DATETIME, FLOOR(CONVERT(FLOAT, LogDate)))
+
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[GetEquipmentDates] TO PUBLIC
+    AS [dbo];
+

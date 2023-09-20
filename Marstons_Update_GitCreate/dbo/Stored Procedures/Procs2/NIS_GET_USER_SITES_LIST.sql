@@ -1,0 +1,16 @@
+﻿
+
+CREATE PROCEDURE dbo.NIS_GET_USER_SITES_LIST
+(
+	@USERID	AS	INT
+)
+AS
+SELECT     EDISID
+FROM         dbo.UserSites
+WHERE     (UserID = @USERID)
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[NIS_GET_USER_SITES_LIST] TO PUBLIC
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [MAINGROUP\Database Edit Product]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

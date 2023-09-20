@@ -52,3 +52,9 @@ CREATE NONCLUSTERED INDEX [missing_index_16060_16059_PeriodCacheVariance]
     ON [dbo].[PeriodCacheVariance]([IsTied] ASC, [WeekCommencing] ASC)
     INCLUDE([EDISID], [ProductID], [Dispensed], [StockDate], [StockAdjustedDelivered], [StockAdjustedDispensed], [StockAdjustedVariance], [IsAudited]);
 
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[PeriodCacheVariance] TO PUBLIC
+    AS [dbo];
+

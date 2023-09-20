@@ -1,0 +1,13 @@
+﻿CREATE PROCEDURE [dbo].[GetUserIDFromVRSUserID]
+(
+	@VRSUserID	INT,
+	@UserID	INT OUTPUT
+)
+AS
+SET @UserID = (SELECT TOP 1	[ID] FROM dbo.Users WHERE VRSUserID = @VRSUserID)
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[GetUserIDFromVRSUserID] TO PUBLIC
+    AS [dbo];
+

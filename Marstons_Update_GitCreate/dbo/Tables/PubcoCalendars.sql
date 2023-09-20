@@ -14,3 +14,9 @@
     [PeriodNumber]        INT          NULL
 );
 
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[PubcoCalendars] TO PUBLIC
+    AS [dbo];
+

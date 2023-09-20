@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [MAINGROUP\Jonathan.Smith]
+    AUTHORIZATION [MAINGROUP\Jonathan.Smith];
+

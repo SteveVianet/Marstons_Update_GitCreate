@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [MAINGROUP\CoinMetrics.SQL1]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

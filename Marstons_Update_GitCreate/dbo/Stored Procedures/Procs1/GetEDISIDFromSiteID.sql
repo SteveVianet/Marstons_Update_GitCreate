@@ -1,0 +1,17 @@
+﻿CREATE PROCEDURE dbo.GetEDISIDFromSiteID
+(
+@SiteID		VARCHAR(15),
+@EDISID		INT		OUTPUT
+)
+AS
+
+
+SET @EDISID	= (SELECT EDISID
+			FROM Sites
+			WHERE SiteID = @SiteID)
+
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[GetEDISIDFromSiteID] TO PUBLIC
+    AS [dbo];
+

@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [MAINGROUP\Operations (Logger 2)]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

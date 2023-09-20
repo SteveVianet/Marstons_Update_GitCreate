@@ -8,3 +8,15 @@
     CONSTRAINT [FK_UserSites_Users] FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([ID]) ON DELETE CASCADE
 );
 
+
+GO
+CREATE NONCLUSTERED INDEX [IX_UserSites_EDISID]
+    ON [dbo].[UserSites]([EDISID] ASC)
+    INCLUDE([UserID]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_UserSites_UserID]
+    ON [dbo].[UserSites]([UserID] ASC)
+    INCLUDE([EDISID]);
+

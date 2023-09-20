@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [MAINGROUP\Auditmaintenance]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

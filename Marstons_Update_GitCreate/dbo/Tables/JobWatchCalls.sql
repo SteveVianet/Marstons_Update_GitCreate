@@ -23,3 +23,9 @@
     CONSTRAINT [PK_JobWatchCalls_1] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
+
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[JobWatchCalls] TO [fusion]
+    AS [dbo];
+

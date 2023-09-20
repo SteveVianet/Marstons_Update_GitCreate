@@ -25,3 +25,7 @@ GO
 CREATE NONCLUSTERED INDEX [IX_SiteExceptions]
     ON [dbo].[SiteExceptions]([EDISID] ASC, [TradingDate] ASC);
 
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'EDISID and TradingDate', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'SiteExceptions', @level2type = N'INDEX', @level2name = N'IX_SiteExceptions';
+

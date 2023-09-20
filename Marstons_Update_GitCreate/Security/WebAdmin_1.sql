@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [WebAdmin]
+    AUTHORIZATION [WebAdmin];
+

@@ -25,3 +25,8 @@ CREATE NONCLUSTERED INDEX [missing_index_635_634_CallStatusHistory]
     ON [dbo].[CallStatusHistory]([StatusID] ASC)
     INCLUDE([ID], [CallID]);
 
+
+GO
+CREATE STATISTICS [hind_1296723672_1A_2A_3A_4A_5A]
+    ON [dbo].[CallStatusHistory]([ID], [CallID], [StatusID], [SubStatusID], [ChangedOn]);
+
